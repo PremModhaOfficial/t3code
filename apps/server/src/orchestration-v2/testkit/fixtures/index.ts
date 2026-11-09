@@ -90,7 +90,7 @@ import { assertMuseTurnInterruptOutput } from "./turn_interrupt/muse_output.ts";
 import { piCompactionInput } from "./pi_compaction/input.ts";
 import { assertPiCompactionOutput } from "./pi_compaction/output.ts";
 import { providerThreadResumeInput } from "./provider_thread_resume/input.ts";
-import { assertKiroProviderThreadResumeOutput } from "./provider_thread_resume/kiro_output.ts";
+import { assertAcpProviderThreadResumeOutput } from "./provider_thread_resume/kiro_output.ts";
 import { assertPiProviderThreadResumeOutput } from "./provider_thread_resume/pi_output.ts";
 import { assertMultiTurnClaudeOutput } from "./multi_turn/claude_output.ts";
 import { assertMultiTurnOutput } from "./multi_turn/codex_output.ts";
@@ -206,6 +206,7 @@ import {
   toolCallReadOnlyOnRequestKiroInput,
 } from "./tool_call_read_only_on_request/input.ts";
 import { assertToolCallReadOnlyOnRequestFxOutput } from "./tool_call_read_only_on_request/fx_output.ts";
+import { assertToolCallReadOnlyOnRequestCommandCodeOutput } from "./tool_call_read_only_on_request/commandCode_output.ts";
 import {
   stopBackgroundWorkAfterFailedTurnInput,
   stopBackgroundWorkAfterReleaseInput,
@@ -1008,6 +1009,16 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         runtimePolicyOverride: READ_ONLY_ON_REQUEST_POLICY,
         assertOutput: assertToolCallReadOnlyOnRequestOutput,
       },
+      {
+        driver: ProviderDriverKind.make("commandCode"),
+        transcriptFile: new URL(
+          "./tool_call_read_only_on_request/commandCode_transcript.ndjson",
+          import.meta.url,
+        ),
+        modelSelection: COMMAND_CODE_MODEL_SELECTION,
+        runtimePolicyOverride: READ_ONLY_ON_REQUEST_POLICY,
+        assertOutput: assertToolCallReadOnlyOnRequestCommandCodeOutput,
+      },
     ],
   },
   {
@@ -1601,7 +1612,16 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         driver: ProviderDriverKind.make("kiro"),
         transcriptFile: new URL("./provider_thread_resume/kiro_transcript.ndjson", import.meta.url),
         modelSelection: KIRO_MODEL_SELECTION,
-        assertOutput: assertKiroProviderThreadResumeOutput,
+        assertOutput: assertAcpProviderThreadResumeOutput,
+      },
+      {
+        driver: ProviderDriverKind.make("commandCode"),
+        transcriptFile: new URL(
+          "./provider_thread_resume/commandCode_transcript.ndjson",
+          import.meta.url,
+        ),
+        modelSelection: COMMAND_CODE_MODEL_SELECTION,
+        assertOutput: assertAcpProviderThreadResumeOutput,
       },
     ],
   },

@@ -51,10 +51,9 @@ interface JsonRpcMessage {
   readonly error?: unknown;
 }
 
-interface WireMessage {
-  readonly direction: "incoming" | "outgoing";
-  readonly message: JsonRpcMessage;
-}
+type WireMessage =
+  | { readonly direction: "incoming" | "outgoing"; readonly message: JsonRpcMessage }
+  | { readonly direction: "respawn" };
 
 function readArgValues(name: string): ReadonlyArray<string> {
   const args = process.argv.slice(2);
@@ -74,18 +73,19 @@ function mapStrings(value: unknown, map: (text: string) => string): unknown {
   );
 }
 
+/**
+ * Tees raw ACP lines in wire order. A later process (the idle release the
+ * resume fixture forces) is marked as a respawn, which replay turns into a
+ * fresh replay agent that continues the transcript.
+ */
 function makeWireTee() {
   const wire: Array<WireMessage> = [];
   let runtimeCount = 0;
   const attachRuntime = () => {
     runtimeCount += 1;
-    if (runtimeCount > 1) {
-      throw new Error(
-        "The Command Code recording spawned a second ACP process; replay drives one.",
-      );
-    }
+    if (runtimeCount > 1) wire.push({ direction: "respawn" });
     let incomingBuffer = "";
-    const push = (direction: WireMessage["direction"], line: string) => {
+    const push = (direction: "incoming" | "outgoing", line: string) => {
       if (line.trim().length === 0) return;
       wire.push({ direction, message: decodeJson(line) as JsonRpcMessage });
     };
@@ -123,7 +123,15 @@ function wireToEntries(wire: ReadonlyArray<WireMessage>): {
   const t3Requests = new Map<string, string>();
   const agentRequests = new Map<string, string>();
   let droppedFrames = 0;
-  for (const { direction, message } of wire) {
+  for (const wireMessage of wire) {
+    if (wireMessage.direction === "respawn") {
+      // JSON-RPC ids restart with the process.
+      t3Requests.clear();
+      agentRequests.clear();
+      entries.push({ type: "runtime_exit", status: "success" });
+      continue;
+    }
+    const { direction, message } = wireMessage;
     const type = direction === "outgoing" ? "expect_outbound" : "emit_inbound";
     if (typeof message.method === "string") {
       const isRequest = message.id !== undefined && message.id !== null;

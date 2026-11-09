@@ -18,10 +18,10 @@ function field(value: unknown, key: string): unknown {
 }
 
 /**
- * After the idle release a fresh `kiro-cli acp` process must `session/load`
- * the first session, and the resumed model still sees the first exchange.
+ * After the idle release a fresh ACP process must `session/load` the first
+ * session, and the resumed model still sees the first exchange.
  */
-export function assertKiroProviderThreadResumeOutput(
+export function assertAcpProviderThreadResumeOutput(
   result: OrchestratorV2ScenarioResult,
   transcript: ProviderReplayTranscript,
 ) {
