@@ -1660,6 +1660,12 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         assertOutput: assertQueuedTurnOutput,
       },
       {
+        driver: ProviderDriverKind.make("commandCode"),
+        transcriptFile: new URL("./queued_turn/commandCode_transcript.ndjson", import.meta.url),
+        modelSelection: COMMAND_CODE_MODEL_SELECTION,
+        assertOutput: assertQueuedTurnOutput,
+      },
+      {
         driver: ProviderDriverKind.make("fx"),
         transcriptFile: new URL("./queued_turn/fx_transcript.ndjson", import.meta.url),
         modelSelection: FX_MODEL_SELECTION,
@@ -1805,6 +1811,15 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         assertOutput: assertGrokMessageSteeringOutput,
       },
       {
+        driver: ProviderDriverKind.make("commandCode"),
+        transcriptFile: new URL(
+          "./message_steering/commandCode_transcript.ndjson",
+          import.meta.url,
+        ),
+        modelSelection: COMMAND_CODE_MODEL_SELECTION,
+        assertOutput: assertGrokMessageSteeringOutput,
+      },
+      {
         driver: ProviderDriverKind.make("fx"),
         transcriptFile: new URL("./message_steering/fx_transcript.ndjson", import.meta.url),
         modelSelection: FX_MODEL_SELECTION,
@@ -1846,6 +1861,13 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         driver: ProviderDriverKind.make("grok"),
         transcriptFile: new URL("./turn_interrupt/grok_transcript.ndjson", import.meta.url),
         modelSelection: GROK_MODEL_SELECTION,
+        runtimePolicyOverride: WORKSPACE_NEVER_POLICY,
+        assertOutput: assertTurnInterruptOutput,
+      },
+      {
+        driver: ProviderDriverKind.make("commandCode"),
+        transcriptFile: new URL("./turn_interrupt/commandCode_transcript.ndjson", import.meta.url),
+        modelSelection: COMMAND_CODE_MODEL_SELECTION,
         runtimePolicyOverride: WORKSPACE_NEVER_POLICY,
         assertOutput: assertTurnInterruptOutput,
       },
