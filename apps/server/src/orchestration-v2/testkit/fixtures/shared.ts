@@ -346,7 +346,7 @@ export const GROK_MODEL_SELECTION = {
  * scenarios cannot settle in time on one.
  */
 export const COMMAND_CODE_MODEL_SELECTION = {
-  instanceId: ProviderInstanceId.make("commandCode"),
+  instanceId: ProviderInstanceId.make("command-code"),
   model: "stealth/crouton-alpha",
 } satisfies ModelSelection;
 

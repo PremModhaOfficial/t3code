@@ -206,7 +206,7 @@ import {
   toolCallReadOnlyOnRequestKiroInput,
 } from "./tool_call_read_only_on_request/input.ts";
 import { assertToolCallReadOnlyOnRequestFxOutput } from "./tool_call_read_only_on_request/fx_output.ts";
-import { assertToolCallReadOnlyOnRequestCommandCodeOutput } from "./tool_call_read_only_on_request/commandCode_output.ts";
+import { assertToolCallReadOnlyOnRequestCommandCodeOutput } from "./tool_call_read_only_on_request/command-code_output.ts";
 import {
   stopBackgroundWorkAfterFailedTurnInput,
   stopBackgroundWorkAfterReleaseInput,
@@ -837,8 +837,8 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         assertOutput: assertSimpleOutput,
       },
       {
-        driver: ProviderDriverKind.make("commandCode"),
-        transcriptFile: new URL("./simple/commandCode_transcript.ndjson", import.meta.url),
+        driver: ProviderDriverKind.make("command-code"),
+        transcriptFile: new URL("./simple/command-code_transcript.ndjson", import.meta.url),
         modelSelection: COMMAND_CODE_MODEL_SELECTION,
         assertOutput: assertSimpleOutput,
       },
@@ -1010,9 +1010,9 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         assertOutput: assertToolCallReadOnlyOnRequestOutput,
       },
       {
-        driver: ProviderDriverKind.make("commandCode"),
+        driver: ProviderDriverKind.make("command-code"),
         transcriptFile: new URL(
-          "./tool_call_read_only_on_request/commandCode_transcript.ndjson",
+          "./tool_call_read_only_on_request/command-code_transcript.ndjson",
           import.meta.url,
         ),
         modelSelection: COMMAND_CODE_MODEL_SELECTION,
@@ -1496,8 +1496,8 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         assertOutput: assertMultiTurnOutput,
       },
       {
-        driver: ProviderDriverKind.make("commandCode"),
-        transcriptFile: new URL("./multi_turn/commandCode_transcript.ndjson", import.meta.url),
+        driver: ProviderDriverKind.make("command-code"),
+        transcriptFile: new URL("./multi_turn/command-code_transcript.ndjson", import.meta.url),
         modelSelection: COMMAND_CODE_MODEL_SELECTION,
         assertOutput: assertMultiTurnOutput,
       },
@@ -1615,9 +1615,9 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         assertOutput: assertAcpProviderThreadResumeOutput,
       },
       {
-        driver: ProviderDriverKind.make("commandCode"),
+        driver: ProviderDriverKind.make("command-code"),
         transcriptFile: new URL(
-          "./provider_thread_resume/commandCode_transcript.ndjson",
+          "./provider_thread_resume/command-code_transcript.ndjson",
           import.meta.url,
         ),
         modelSelection: COMMAND_CODE_MODEL_SELECTION,
@@ -1680,8 +1680,8 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         assertOutput: assertQueuedTurnOutput,
       },
       {
-        driver: ProviderDriverKind.make("commandCode"),
-        transcriptFile: new URL("./queued_turn/commandCode_transcript.ndjson", import.meta.url),
+        driver: ProviderDriverKind.make("command-code"),
+        transcriptFile: new URL("./queued_turn/command-code_transcript.ndjson", import.meta.url),
         modelSelection: COMMAND_CODE_MODEL_SELECTION,
         assertOutput: assertQueuedTurnOutput,
       },
@@ -1831,9 +1831,9 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         assertOutput: assertGrokMessageSteeringOutput,
       },
       {
-        driver: ProviderDriverKind.make("commandCode"),
+        driver: ProviderDriverKind.make("command-code"),
         transcriptFile: new URL(
-          "./message_steering/commandCode_transcript.ndjson",
+          "./message_steering/command-code_transcript.ndjson",
           import.meta.url,
         ),
         modelSelection: COMMAND_CODE_MODEL_SELECTION,
@@ -1885,8 +1885,8 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         assertOutput: assertTurnInterruptOutput,
       },
       {
-        driver: ProviderDriverKind.make("commandCode"),
-        transcriptFile: new URL("./turn_interrupt/commandCode_transcript.ndjson", import.meta.url),
+        driver: ProviderDriverKind.make("command-code"),
+        transcriptFile: new URL("./turn_interrupt/command-code_transcript.ndjson", import.meta.url),
         modelSelection: COMMAND_CODE_MODEL_SELECTION,
         runtimePolicyOverride: WORKSPACE_NEVER_POLICY,
         assertOutput: assertTurnInterruptOutput,

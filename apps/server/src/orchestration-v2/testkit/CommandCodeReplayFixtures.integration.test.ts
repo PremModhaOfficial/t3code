@@ -4,7 +4,7 @@ import { CommandCodeOrchestratorReplayHarness } from "../Adapters/CommandCodeAda
 import { itRunsReplayFixtures, runReplayFixture } from "./ProviderReplayFixtures.ts";
 
 describe("Command Code replay fixtures", () => {
-  itRunsReplayFixtures("commandCode", (input) =>
+  itRunsReplayFixtures("command-code", (input) =>
     runReplayFixture({ ...input, harness: CommandCodeOrchestratorReplayHarness }),
   );
 });

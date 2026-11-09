@@ -97,7 +97,7 @@ function parseUsageRecord(line: string, state: CommandCodeUsageState): readonly 
   const messageId = record.id?.trim();
   return [
     {
-      provider: "commandCode",
+      provider: "command-code",
       timestampMs,
       model,
       sessionId,
@@ -159,7 +159,7 @@ export const commandCodeUsageFormat: TranscriptUsageFormat<CommandCodeUsageState
 
 export const commandCodeUsageReader: ProviderUsageReader<CommandCodeSettings, Path.Path> = {
   kind: "transcripts",
-  provider: "commandCode",
+  provider: "command-code",
   format: commandCodeUsageFormat,
   directories: Effect.fn("commandCodeUsageReader.directories")(function* ({ environment }) {
     const path = yield* Path.Path;

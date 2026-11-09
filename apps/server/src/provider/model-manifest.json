@@ -51,7 +51,7 @@
       ]
     },
     {
-      "driver": "commandCode",
+      "driver": "command-code",
       "t3CodeRange": ">=0.1.8",
       "recommendedRange": ">=1.88.5",
       "ranges": [

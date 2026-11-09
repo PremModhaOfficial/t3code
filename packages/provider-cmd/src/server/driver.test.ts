@@ -45,7 +45,7 @@ const noSpawner = ChildProcessSpawner.make(() =>
 
 const createDriver = (input: { readonly enabled: boolean; readonly binaryPath?: string }) =>
   CommandCodeDriver.create({
-    instanceId: ProviderInstanceId.make("commandCode"),
+    instanceId: ProviderInstanceId.make("command-code"),
     displayName: "Command Code test",
     enabled: input.enabled,
     environment: [],
@@ -70,7 +70,7 @@ it.layer(layerTest)("command code startup safety", (it) => {
     Effect.gen(function* () {
       const instance = yield* createDriver({ enabled: true });
 
-      expect(instance.driverKind).toBe("commandCode");
+      expect(instance.driverKind).toBe("command-code");
       expect(instance.enabled).toBe(true);
       expect(instance.orchestrationAdapter).toBeDefined();
       expect(instance.textGeneration).toBeDefined();

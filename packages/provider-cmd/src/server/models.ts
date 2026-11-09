@@ -2,7 +2,7 @@ import type { ModelCapabilities } from "@t3tools/contracts";
 import { ProviderDriverKind } from "@t3tools/contracts";
 import { createModelCapabilities, normalizeModelSlug } from "@t3tools/shared/model";
 
-export const COMMAND_CODE_PROVIDER = ProviderDriverKind.make("commandCode");
+export const COMMAND_CODE_PROVIDER = ProviderDriverKind.make("command-code");
 
 /**
  * Product slug meaning "keep whatever model the session opened with". It must be the shared

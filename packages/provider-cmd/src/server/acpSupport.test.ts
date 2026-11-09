@@ -117,6 +117,6 @@ describe("resolveCommandCodeAcpModelId", () => {
   });
 
   it("is branded with the driver kind", () => {
-    expect(COMMAND_CODE_PROVIDER).toBe(ProviderDriverKind.make("commandCode"));
+    expect(COMMAND_CODE_PROVIDER).toBe(ProviderDriverKind.make("command-code"));
   });
 });

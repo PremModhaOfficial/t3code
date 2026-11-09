@@ -3,7 +3,7 @@ import { defineProviderClient } from "@t3tools/provider-core/client";
 
 import { CommandCodeSettings } from "./settings.ts";
 
-const COMMAND_CODE_PROVIDER = ProviderDriverKind.make("commandCode");
+const COMMAND_CODE_PROVIDER = ProviderDriverKind.make("command-code");
 
 export const commandCodeClient = defineProviderClient({
   driverKind: COMMAND_CODE_PROVIDER,

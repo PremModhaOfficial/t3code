@@ -9,7 +9,7 @@ import { claudeUsageFormat } from "../provider/Drivers/claudeUsage.ts";
 import { codexUsageFormat } from "../provider/Drivers/codexUsage.ts";
 
 export const TEST_FORMATS: Record<
-  "claude" | "codex" | "grok" | "pi" | "muse" | "commandCode",
+  "claude" | "codex" | "grok" | "pi" | "muse" | "command-code",
   TranscriptUsageFormat<unknown>
 > = {
   claude: claudeUsageFormat,
@@ -17,7 +17,7 @@ export const TEST_FORMATS: Record<
   grok: grokUsageFormat,
   pi: piUsageFormat,
   muse: museUsageFormat,
-  commandCode: commandCodeUsageFormat,
+  "command-code": commandCodeUsageFormat,
 };
 
 export const TEST_FORMAT_MAP = new Map<UsageProviderKind, TranscriptUsageFormat<unknown>>(

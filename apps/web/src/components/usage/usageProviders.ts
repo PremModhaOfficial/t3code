@@ -47,10 +47,10 @@ export const PROVIDER_PRESENTATION = {
     color: "#0866ff",
     driverKind: ProviderDriverKind.make("muse"),
   },
-  commandCode: {
+  "command-code": {
     label: "Command Code",
     color: "#e8574a",
-    driverKind: ProviderDriverKind.make("commandCode"),
+    driverKind: ProviderDriverKind.make("command-code"),
   },
 } satisfies Record<UsageProviderKind, UsageProviderPresentation>;
 

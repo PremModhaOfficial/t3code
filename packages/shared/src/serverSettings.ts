@@ -68,7 +68,7 @@ const TEXT_GENERATION_FALLBACK_DRIVERS = [
   "pi",
   "opencode",
   "antigravity",
-  "commandCode",
+  "command-code",
 ].map((driver) => ProviderDriverKind.make(driver));
 
 /** Only project-scoped callers may include configured instances when falling back; machine-level callers leave it unset. */

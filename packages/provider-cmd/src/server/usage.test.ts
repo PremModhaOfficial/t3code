@@ -79,7 +79,7 @@ describe("commandCodeUsageFormat", () => {
 
     expect(records).toHaveLength(1);
     expect(records[0]).toMatchObject({
-      provider: "commandCode",
+      provider: "command-code",
       sessionId: "053d225d-3081-4722-86ac-8a3700309d0b",
       model: "z-ai/glm-5.3-flash",
       reportedCostUsd: 0.0038,

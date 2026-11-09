@@ -124,7 +124,7 @@ const MUSE_DRIVER_KIND = ProviderDriverKind.make("muse");
 const PI_DRIVER_KIND = ProviderDriverKind.make("pi");
 const ACP_REGISTRY_DRIVER_KIND = ProviderDriverKind.make("acpRegistry");
 const OPENCODE_DRIVER_KIND = ProviderDriverKind.make("opencode");
-const COMMAND_CODE_DRIVER_KIND = ProviderDriverKind.make("commandCode");
+const COMMAND_CODE_DRIVER_KIND = ProviderDriverKind.make("command-code");
 
 export const DEFAULT_MODEL = "gpt-6-astra";
 
