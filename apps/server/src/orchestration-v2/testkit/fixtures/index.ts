@@ -1485,6 +1485,12 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         assertOutput: assertMultiTurnOutput,
       },
       {
+        driver: ProviderDriverKind.make("commandCode"),
+        transcriptFile: new URL("./multi_turn/commandCode_transcript.ndjson", import.meta.url),
+        modelSelection: COMMAND_CODE_MODEL_SELECTION,
+        assertOutput: assertMultiTurnOutput,
+      },
+      {
         driver: ProviderDriverKind.make("fx"),
         transcriptFile: new URL("./multi_turn/fx_transcript.ndjson", import.meta.url),
         modelSelection: FX_MODEL_SELECTION,

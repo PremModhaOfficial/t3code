@@ -340,10 +340,14 @@ export const GROK_MODEL_SELECTION = {
   model: "grok-build",
 } satisfies ModelSelection;
 
-/** A free Command Code model, so recordings cost nothing and do not depend on account credits. */
+/**
+ * A free, lightweight Command Code model. The lightweight tier matters: the scenario idle wait
+ * allows 60s of wall clock, and a reasoning model spends that on a single turn, so multi-turn
+ * scenarios cannot settle in time on one.
+ */
 export const COMMAND_CODE_MODEL_SELECTION = {
   instanceId: ProviderInstanceId.make("commandCode"),
-  model: "reflection/beam:free",
+  model: "stealth/crouton-alpha",
 } satisfies ModelSelection;
 
 /** fx fixtures run on fx's Default; the replay adapter has no probed model, so it writes none. */
