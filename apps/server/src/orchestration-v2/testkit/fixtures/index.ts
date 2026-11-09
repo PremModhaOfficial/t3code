@@ -244,6 +244,7 @@ import {
   ACP_REGISTRY_MODEL_SELECTION,
   CLAUDE_MODEL_SELECTION,
   CODEX_MODEL_SELECTION,
+  COMMAND_CODE_MODEL_SELECTION,
   CURSOR_MODEL_SELECTION,
   FX_MODEL_SELECTION,
   GROK_MODEL_SELECTION,
@@ -832,6 +833,12 @@ export const ORCHESTRATOR_REPLAY_FIXTURES: ReadonlyArray<OrchestratorReplayFixtu
         driver: ProviderDriverKind.make("grok"),
         transcriptFile: new URL("./simple/grok_transcript.ndjson", import.meta.url),
         modelSelection: GROK_MODEL_SELECTION,
+        assertOutput: assertSimpleOutput,
+      },
+      {
+        driver: ProviderDriverKind.make("commandCode"),
+        transcriptFile: new URL("./simple/commandCode_transcript.ndjson", import.meta.url),
+        modelSelection: COMMAND_CODE_MODEL_SELECTION,
         assertOutput: assertSimpleOutput,
       },
       {

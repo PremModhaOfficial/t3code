@@ -47,6 +47,11 @@ export const PROVIDER_PRESENTATION = {
     color: "#0866ff",
     driverKind: ProviderDriverKind.make("muse"),
   },
+  commandCode: {
+    label: "Command Code",
+    color: "#e8574a",
+    driverKind: ProviderDriverKind.make("commandCode"),
+  },
 } satisfies Record<UsageProviderKind, UsageProviderPresentation>;
 
 export const PROVIDER_ORDER = Object.keys(PROVIDER_PRESENTATION) as UsageProviderKind[];

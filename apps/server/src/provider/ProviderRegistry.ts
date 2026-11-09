@@ -193,6 +193,12 @@ const shouldRetainMissingProviderModels = (provider: ServerProvider): boolean =>
     return !(provider.installed && provider.status === "ready");
   }
 
+  if (provider.driver === ProviderDriverKind.make("commandCode")) {
+    // Command Code also reports ready only after `--list-models` returns a catalog, so a ready
+    // probe replaces the cached rows instead of keeping models the CLI no longer lists.
+    return !(provider.installed && provider.status === "ready");
+  }
+
   const isAntigravity = provider.driver === ProviderDriverKind.make("antigravity");
   const isCodex = provider.driver === ProviderDriverKind.make("codex");
   if (!isAntigravity && !isCodex && provider.driver !== ProviderDriverKind.make("opencode")) {

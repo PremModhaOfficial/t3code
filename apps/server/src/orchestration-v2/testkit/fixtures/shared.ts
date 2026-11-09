@@ -340,6 +340,12 @@ export const GROK_MODEL_SELECTION = {
   model: "grok-build",
 } satisfies ModelSelection;
 
+/** A free Command Code model, so recordings cost nothing and do not depend on account credits. */
+export const COMMAND_CODE_MODEL_SELECTION = {
+  instanceId: ProviderInstanceId.make("commandCode"),
+  model: "reflection/beam:free",
+} satisfies ModelSelection;
+
 /** fx fixtures run on fx's Default; the replay adapter has no probed model, so it writes none. */
 export const FX_MODEL_SELECTION = {
   instanceId: ProviderInstanceId.make("fx"),

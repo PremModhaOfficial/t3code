@@ -124,6 +124,7 @@ const MUSE_DRIVER_KIND = ProviderDriverKind.make("muse");
 const PI_DRIVER_KIND = ProviderDriverKind.make("pi");
 const ACP_REGISTRY_DRIVER_KIND = ProviderDriverKind.make("acpRegistry");
 const OPENCODE_DRIVER_KIND = ProviderDriverKind.make("opencode");
+const COMMAND_CODE_DRIVER_KIND = ProviderDriverKind.make("commandCode");
 
 export const DEFAULT_MODEL = "gpt-6-astra";
 
@@ -155,6 +156,9 @@ export const DEFAULT_MODEL_BY_PROVIDER: Partial<Record<ProviderDriverKind, strin
   // "default" defers to the user's own Pi settings.json model selection.
   [PI_DRIVER_KIND]: "default",
   [OPENCODE_DRIVER_KIND]: "openai/gpt-5",
+  // Must equal the provider's own sentinel: the ACP adapter only skips its model write for
+  // `default`. Real models come from `cmd --list-models`.
+  [COMMAND_CODE_DRIVER_KIND]: "default",
   [ProviderDriverKind.make("antigravity")]: ANTIGRAVITY_DEFAULT_MODEL,
 };
 
@@ -166,6 +170,8 @@ export const DEFAULT_TEXT_GENERATION_MODEL_BY_PROVIDER: Partial<
   [CLAUDE_DRIVER_KIND]: "claude-haiku-5-5",
   [CURSOR_DRIVER_KIND]: "composer-2",
   [OPENCODE_DRIVER_KIND]: "opencode/big-pickle",
+  // The sentinel leaves text generation on whatever model the session opened with.
+  [COMMAND_CODE_DRIVER_KIND]: "default",
 };
 
 export const MODEL_SLUG_ALIASES_BY_PROVIDER: Partial<
@@ -206,4 +212,5 @@ export const PROVIDER_DISPLAY_NAMES: Partial<Record<ProviderDriverKind, string>>
   [ACP_REGISTRY_DRIVER_KIND]: "ACP Registry",
   [PI_DRIVER_KIND]: "Pi",
   [OPENCODE_DRIVER_KIND]: "OpenCode",
+  [COMMAND_CODE_DRIVER_KIND]: "Command Code",
 };
